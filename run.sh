@@ -3,19 +3,17 @@
 while IFS= read -r word <&3; do
 
   echo "$word"
-  echo "HERE"
 
   imgfile="/tmp/image.png"
   soundfile="/tmp/sound.mp3"
   videofile="/tmp/video.mov"
-  ${word// /%20}
 
   rm -f "$imgfile"
   rm -f "$soundfile"
   rm -f "$videofile"
 
   # Generate image.
-  if ! convert -size 2560x1440 xc:yellow -pointsize 120 -family "Verdana" -fill black -draw "text 64,128 'How to pronounce:
+  if ! convert -size 2560x1440 xc:yellow -pointsize 120 -family "Verdana" -fill black -draw "text 64,128 'How to say:
 
 \"$word\"'" "$imgfile"; then
     echo "ERROR: Could not create image $word"
@@ -26,8 +24,9 @@ while IFS= read -r word <&3; do
   echo "HERE2"
 
   # Get the sound file.
+  wordpath=$(echo "$word" | sed 's/ /%20/g')
   soundfile="/tmp/sound.mp3"
-  if ! curl -s --fail "https://d1qx7pbj0dvboc.cloudfront.net/$word.mp3" > "$soundfile"; then
+  if ! curl -s --fail "https://d1qx7pbj0dvboc.cloudfront.net/$wordpath.mp3" > "$soundfile"; then
     echo "ERROR: Could not get sound $word"
     echo "$word" >> failed.txt
     continue
