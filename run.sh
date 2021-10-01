@@ -46,8 +46,8 @@ while IFS= read -r word <&3; do
   # Upload to youtube.
   python upload_video.py --file="$videofile"\
   --title="How to pronounce $word"\
-  --description="How to pronounce $word.\\n\\nA free online pronunciation dictionary.\\n\\n$word pronunciation.\\n\\nEnglish and American Spelling with naturally recorded voice.\\n\\nCredit:\\nhttps://howjsay.com\\nhttps://howjsay.com/how-to-pronounce-$word"\
-  --keywords="pronunciation,dictionary,learn,talk,pronounce,words,$word,speak,english"\
+  --description="How to pronounce $word.\\n\\nA free online pronunciation dictionary.\\n\\n$word pronunciation.\\n\\nEnglish and American Spelling with naturally recorded voice.\\n\\nDefintion:\\nhttps://www.google.com.au/search?q=definition+$word \\n\\nTranslation:\\nhttps://translate.google.com/?sl=auto&tl=zh-CN&text=$word&op=translate\\n\\nCredit:\\nhttps://howjsay.com\\nhttps://howjsay.com/how-to-pronounce-$word"\
+  --keywords="pronunciation,dictionary,how to say $word,learn,talk,pronounce,words,$word,speak,english"\
   --category="27"\
   --privacyStatus="public"
 
